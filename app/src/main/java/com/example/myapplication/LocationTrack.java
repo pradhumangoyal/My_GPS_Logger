@@ -210,7 +210,7 @@ public class LocationTrack extends Service implements LocationListener {
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
-
+        Log.i(this, s);
     }
 
     @Override
@@ -224,6 +224,37 @@ public class LocationTrack extends Service implements LocationListener {
     }
 
     public void startRecord(double longitude, double latitude) {
+        //Append to the csv file in recording
+        OutputStreamWriter osw;
+        fileName = "MyGPSLogger_" + System.currentTimeMillis() / 1000 + ".csv";
+                        sdCard = Environment.getExternalStorageDirectory();
+                        directory = new File (sdCard.getAbsolutePath() +
+                                "/MyGPSLogger");
+                        if (!directory.exists())
+                        {
+                            directory.mkdirs();
+                        }
+                        try {
+                            file = new File(directory, fileName);
+                            if (!file.exists())
+                            {
+                                file.createNewFile();
+                            }
+                            fOut = new FileOutputStream(file, true);
+                            osw = new
+                                    OutputStreamWriter(fOut);
+                        } catch (Exception e) {
 
+                        }
+        try
+        {
+            String myStr = latitude + "," + longitude + "," + speed + "\n";
+            osw.write(myStr);
+            osw.flush();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
     }
 }
