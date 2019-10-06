@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     Button viewMap;
 
     private String mLastUpdateTime;
-    Timer timer = new Timer();;
+    Timer timer = new Timer();
 
     private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 1000;
 
@@ -214,11 +214,9 @@ public class MainActivity extends AppCompatActivity {
                             "Lng: " + mCurrentLocation.getLongitude() + ", Speed: " + mCurrentLocation.getSpeed()
             );
 
-//             giving a blink animation on TextView
             txtLocationResult.setAlpha(0);
             txtLocationResult.animate().alpha(1).setDuration(300);
 
-            // location last updated time
             txtUpdatedOn.setText("Last updated on: " + mLastUpdateTime);
         }
 
