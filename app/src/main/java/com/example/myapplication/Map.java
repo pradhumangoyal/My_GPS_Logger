@@ -43,7 +43,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
-        intent.setType("text/*");
+        intent.setType("text/csv");
 
         startActivityForResult(intent, READ_REQUEST_CODE);
     }

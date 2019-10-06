@@ -424,7 +424,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkPermissions() {
         int permissionState = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
-        return permissionState == PackageManager.PERMISSION_GRANTED;
+        int storagePermissionState = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        return permissionState == PackageManager.PERMISSION_GRANTED && storagePermissionState == PackageManager.PERMISSION_GRANTED;
     }
 
 
